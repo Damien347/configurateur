@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>configurateur</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<script>
+	/********************************/
+	/* Initialisation des variables */
+	/********************************/
+
+
+	/* Variables du client */
+var soldeClient;
+var age;
+var permis;
+
+	/* Variables choix de customnisation */
+var couleur;
+var mode;
+var music;
+var motorisation;
+
+	/* variables des prix */
+var prixVehiculeDeSerie = 16000;
+var prixCouleur = 300;
+var prixSport = 700;
+var prixMusic = 150;
+var prixMoteurTdi = 3000;
+var prixMoteurGti = 5200;
+
+
+	/********************************/
+	/*          Fonctions           */
+	/********************************/
+
+
+	/* verifier age */
+function verifierAge(age){
+	age = prompt('Quel age avez-vous ?');
+			if(age >= 18){
+				permis = prompt('Avez-vous le permis de conduire ?');
+			}
+			else if(age < 18){
+				alert('Revenez quand vous serez majeur avec votre permis');
+			}		
+			else if(age != Number){
+				alert('Veuillez indiquez un nombre');
+			}
+			else {
+				alert('Veuillez indiquez votre age en chiffre');
+			}
+}
+
+
+	/* verifier permis */
+function verifierPermis(){
+	permis = prompt('Avez-vous le permis de conduire ?');
+	while(permis == String){
+		if(permis == 'oui'){
+			soldeClient = prompt('Avez-vous un solde crediteur supérieur a 16000€ ?');
+		}
+		else if(permis == 'non'){
+			alert('Passez d\'abord votre permis !');
+		}
+		else {
+			alert('Veuillez répondre par oui ou non');
+		}
+		
+	}
+}
+
+
+	/* verifier solde */
+function verifierSoldeClient(soldeClient){
+	soldeClient = prompt('Avez-vous un solde crediteur supérieur a 16000€ ?');
+	while(soldeClient == String){
+		if(soldeClient == 'oui'){
+			alert('Vous pouvez commencez a configurer votre vehicule');
+		}
+		else if(soldeClient == 'non'){
+			alert('Vous n\'avez pas assez d\'argent');
+		}
+		else{
+			alert('Veuillez répondre par oui ou non');
+		}
+	}
+}
+
+	/* Fonction achatPossible */
+function achatPossible(age, permis, solde){
+	/* premier niveau */
+	age = prompt('Quel age avez-vous ?');
+	if(age >= 18){
+		permis = prompt('Avez-vous le permis de conduire ?');
+	/* deuxieme niveau */
+		if(permis == 'oui'){
+			soldeClient = prompt('Avez-vous un solde crediteur supérieur a 16000€ ?');
+	/* troisieme niveau */
+			if(soldeClient == 'oui'){
+				alert('Vous pouvez commencez a configurer votre vehicule');
+			}
+			else if(soldeClient == 'non'){
+				alert('Vous n\'avez pas assez d\'argent');
+			}
+			else{
+				alert('Veuillez répondre par oui ou non');
+			}
+		}
+		else if(permis == 'non'){
+			alert('Passez d\'abord votre permis !');
+		}
+		else {
+			alert('Veuillez répondre par oui ou non');
+		}
+	}
+	else if(age < 18){
+		alert('Revenez quand vous serez majeur avec votre permis');
+	}		
+	else {
+		alert('Veuillez indiquez un age');
+	}
+}
+
+
+/*************************************************************/
+
+	verifierAge(age);
+	
+
+
+	/* choix de la couleur */
+if(soldeClient != 'non'){
+	do {
+		switch(couleur = prompt('Choisissez la couleur de votre vehicule ? Blanc (sans supp) noir, bleu ou rouge (+300 €) ')){
+			case 'blanc' :
+				prixTotal == prixVehiculeDeSerie;
+				break;
+			case 'noir' :
+				prixTotal == prixVehiculeDeSerie + prixCouleur;
+				break;
+			case 'rouge' : 
+				prixTotal == prixVehiculeDeSerie + prixCouleur;
+				break;
+			case 'bleu' :
+				prixTotal == prixVehiculeDeSerie + prixCouleur;
+				break;
+			default :
+				break;
+		}
+	} 
+	while (couleur != 'blanc' && couleur != 'noir' && couleur != 'rouge' && couleur != 'bleu');
+}
+
+
+	/* choix du packSport */
+do {
+	mode = prompt('Souhaitez-vous le pack Sport (700€)');
+		if(mode == 'oui'){
+			prixTotal += prixSport;
+		}
+		else if(mode == 'non'){
+			prixTotal == prixTotal;
+		}
+		else {
+			alert('Veuillez choisir oui ou non pour le pack sport')
+		}
+}
+while(mode != 'oui' && mode != 'non');
+
+	/* choix du packMusic */
+do {
+	prixMusic = prompt('Souhaitez-vous le pack music bose (150€ supp.) ?');
+		if(music == 'oui'){
+			prixTotal += prixMusic;
+		}
+		else if(music == 'non'){
+			prixTotal == prixTotal;
+		}
+		else {
+			alert('Veuillez répondre oui ou non pour le pack bose (150€ supp.');
+		}
+}
+while(music != 'oui' && music != 'non');
+
+	/* choix du moteur */
+do {
+	switch(motorisation = prompt('Quel moteur souhaitez-vous ? hdi 120 ?(sans supp.) tdi 160 ?(+3000€) gti 220 ?(+5200€)')){
+		case 'hdi 120':
+			prixTotal == prixTotal;
+		case 'tdi 160':
+			prixTotal += prixMoteurTdi;
+		case 'gti 220':
+			prixTotal += prixMoteurGti;
+		default :
+			alert('Veuillez saisir un moteur valide : hdi 120, tdi 160 ou gti 220');
+	}
+}
+while(motorisation != 'hdi 120' && motorisation != 'tdi 160' && motorisation != 'gti 220');
+	
+
+	/* fonction prixTotal */
+function prixTotal(prixVehiculeDeSerie, prixCouleur, prixSport, prixMusic, prixMoteurTdi, prixMoteurGti){
+	prixVehiculeDeSerie = 16000;
+	
+}
+
+
+
+</script>
+
+</body>
+</html>
