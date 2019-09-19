@@ -39,18 +39,16 @@ var prixMoteurGti = 5200;
 	/* verifier age */
 function verifierAge(age){
 	age = prompt('Quel age avez-vous ?');
-			if(age >= 18){
-				permis = prompt('Avez-vous le permis de conduire ?');
-			}
-			else if(age < 18){
-				alert('Revenez quand vous serez majeur avec votre permis');
-			}		
-			else if(age != Number){
-				alert('Veuillez indiquez un nombre');
-			}
-			else {
-				alert('Veuillez indiquez votre age en chiffre');
-			}
+	while(age != Number){
+		alert('Veuillez indiquez un nombre');
+		prompt('Quel age avez-vous ?');
+	}
+		if(age >= 18){
+			permis = prompt('Avez-vous le permis de conduire ?');
+		}
+		else {
+			alert('Revenez quand vous serez majeur avec votre permis');
+		}
 }
 
 
